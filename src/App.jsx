@@ -10,7 +10,7 @@ function MainPage() {
 
   return (
     <>
-    <Navbar />
+    {/* <Navbar /> */}
     <main>
       <section><Home /></section>
     </main>
