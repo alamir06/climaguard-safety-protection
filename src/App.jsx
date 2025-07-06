@@ -1,10 +1,8 @@
 import { useState } from 'react'
 import './App.css'
-import Navbar from './Components/Navbar/Navbar'
-import Home from './Components/Home/Home'
 import { Route, Routes } from 'react-router-dom'
-import About from './Components/About/About'
-
+import Home from './Pages/Home/Home'
+import About from './Pages/About/About'
 function MainPage() {
   const [count, setCount] = useState(0)
 

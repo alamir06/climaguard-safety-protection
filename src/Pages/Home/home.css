@@ -1,3 +1,4 @@
+/* Base mobile styles (default) */
 .home {
   position: relative;
   display: flex;
@@ -5,7 +6,7 @@
   align-items: center;
   background: linear-gradient(to bottom, #1e3a8a, #3b82f6);
   min-height: 100vh;
-  padding: 2rem 1rem;
+  padding: 1.5rem 1rem;
   color: white;
   font-family: 'Segoe UI', sans-serif;
   overflow: hidden;
@@ -41,66 +42,119 @@
   transform: rotate(180deg);
 }
 
-/* Make sure all content sits above background */
 .home > * {
   position: relative;
   z-index: 2;
 }
 
-
 .top-section {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  gap: 10px;
+}
+
+.heri-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
   margin-bottom: 2rem;
+}
+.app-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: whitesmoke;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+.forecast-select {
+  width: 100%;
+  max-width: 250px;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  font-family: 'Segoe UI', sans-serif;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  backdrop-filter: blur(6px);
+  outline: none;
+  transition: background-color 0.3s ease;
+  appearance: none;
+}
+
+.forecast-select:hover,
+.forecast-select:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* For mobile */
+@media (max-width: 640px) {
+  .forecast-select {
+    width: 90%;
+  }
+}
+
+
+.hero-main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .location {
   font-size: 1.1rem;
-  opacity: 0.8;
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 .temperature {
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: 600;
 }
 
 .weather-status {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
-  width: 100%;
-  max-width: 350px;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 
 .card {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  backdrop-filter: blur(10px);
+  padding: 0.8rem;
+  width: 80px;
+  text-align: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .card .icon {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .card h3 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .card p {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   opacity: 0.8;
 }
 
 .action-buttons {
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 350px;
   margin-bottom: 1.5rem;
 }
 
@@ -113,7 +167,7 @@
   border: none;
   cursor: pointer;
   font-weight: 500;
-  flex: 1;
+  width: 100%;
   transition: 0.2s ease;
 }
 
@@ -128,14 +182,60 @@
 
 .guard-btn {
   width: 100%;
-  max-width: 350px;
 }
 
 .btn.shield {
-  width: 100%;
   background-color: rgba(255, 255, 255, 0.1);
   color: white;
   font-size: 1.1rem;
   backdrop-filter: blur(10px);
   border: 2px solid white;
+  width: 100%;
+}
+
+/* ------------------------- */
+/* Desktop/Tablet media queries */
+/* ------------------------- */
+@media (min-width: 640px) {
+  .hero-main-content {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .location {
+    margin-right: 2rem;
+    margin-bottom: 0;
+    font-size: 1.25rem;
+  }
+
+  .temperature {
+    font-size: 4rem;
+  }
+
+  .weather-status {
+    gap: 1.5rem;
+    justify-content: center;
+  }
+
+  .card {
+    width: 100px;
+  }
+
+  .app-title {
+    font-size: 3rem;
+  }
+
+  .action-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .btn {
+    width: auto;
+    flex: 1;
+  }
+
+  .guard-btn {
+    max-width: 350px;
+  }
 }

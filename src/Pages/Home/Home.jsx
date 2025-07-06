@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import clim from "../../assets/clim.png"; // You can replace this with a transparent cloud icon or weather background
+import clim from "../../assets/clim.png"; 
 import "./home.css";
 import { fetchWeatherByCoords } from '../../Card/Weather';
 
 const Home = () => {
    const [weather, setWeather] = useState(null);
-   console.log(weather);
-   
     const [locationStatus, setLocationStatus] = useState("Getting location...");
-    // console.log(locationStatus);
-    
  useEffect(() => {
     if (!navigator.geolocation) {
       setLocationStatus("Geolocation is not supported by your browser");
@@ -18,7 +14,6 @@ const Home = () => {
         async (position) => {
           const { latitude, longitude } = position.coords;
           console.log(latitude,longitude);
-          
           try {
             const data = await fetchWeatherByCoords(latitude, longitude);
             setWeather(data);
@@ -38,12 +33,22 @@ const Home = () => {
 return (
     <div className="home">
       <div className="top-section">
-        <span className="location">{locationStatus}</span>
+            <div className="heri-title">
+            <span className="app-title">ClimaGuard</span>
+            <select className="forecast-select">
+            <option value="current">Current</option>
+            <option value="hourly">Hourly Forecast</option>
+            <option value="daily">Daily Forecast</option>
+            <option value="weekly">Weekly Forecast</option>
+            </select>
+            </div>
+        <div className='hero-main-content'>
+          <h1 className="location">{locationStatus}</h1>
         {weather && (
           <h1 className="temperature">{Math.round(weather.main.temp)}°C</h1>
         )}
+        </div>
       </div>
-
       {weather && (
         <div className="weather-status">
           <div className="card">
@@ -57,12 +62,10 @@ return (
           </div>
         </div>
       )}
-
       <div className="action-buttons">
         <button className="btn">🔍 Plan Trip</button>
         <button className="btn red">🚨 Emergency</button>
       </div>
-
       <div className="guard-btn">
         <button className="btn shield">🛡️ Guard ON</button>
       </div>
